@@ -15,7 +15,6 @@ class Hangman:
                 if self.guess == self.word[character]:
                     self.word_guessed[character] = character
             self.num_letters = self.num_letters - 1
-            print (self.num_letters)
         else:
             print(f"Sorry, {self.guess} is not in the word. Try again.")
             self.num_lives = self.num_lives -1
