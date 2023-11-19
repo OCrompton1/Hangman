@@ -44,7 +44,6 @@ class Hangman:
         '''
         while True:
             guess = input("Enter a single letter \n")
-            
             if len(guess) != 1 or guess.isalpha() == False:
                 print("Invalid letter. Please, enter a single alphabetical character.")   
             elif guess in self.list_of_guesses: 
@@ -53,12 +52,10 @@ class Hangman:
                 self.check_guess(guess)
                 self.list_of_guesses.extend(guess)
                 print(self.word_guessed)
-                
                 break
-            
-            
+                  
 def play_game(word_list):
-    # This function pulls class methods together with conditions to simulate the game.
+    # This function pulls class methods together with conditions to simulate the game 
     guess = str()
     game = Hangman(word_list)    
     while True:
