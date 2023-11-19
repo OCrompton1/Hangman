@@ -1,13 +1,26 @@
 import random
 class Hangman:
+    '''
+    This class is used to represent a game of Hangman.
+   
+    Attributes:
+        word_list (list): Contains list of words to be used in the game of Hangman.
+        num_lives (int): Number of livesthe user has. Default value is 5.
+    '''
     def __init__(self, word_list, num_lives=5):
-        self.word_list = word_list
-        self.num_lives = num_lives
-        self.word = random.choice(word_list)
-        self.word_guessed = ["_" for char in self.word]
-        self.num_letters = len(set(self.word))
-        self.list_of_guesses = []
+        self.word_list = word_list # The list of words that can be used in the game.
+        self.num_lives = num_lives # The number of lives the user has.
+        self.word = random.choice(word_list) # The word to be guessed, picked randomly from the word_list.
+        self.word_guessed = ["_" for char in self.word] # Contains a list of the letters of the word, with _ for each letter not yet guessed.
+        self.num_letters = len(set(self.word)) # The number of unique letters in the word that have not been guessed yet.
+        self.list_of_guesses = [] # A list of the guesses that have been tried.
     def check_guess(self, guess):
+        '''
+        This method checks whether the user's guess is a letter in the word
+
+        Args:
+            guess (str): The user's guess for a letter in the word
+        '''
         guess = guess.lower()
         if guess in self.word:
             print(f"Good guess! {guess} is in the word")
@@ -21,6 +34,14 @@ class Hangman:
             print(f"You have {self.num_lives} lives left")
                 
     def ask_for_input(self, guess):
+        '''
+        This method allows the user to input a guess and calls check_guess(guess) to check if the letter is contained in the word.
+        It also checks that the guess was valid (a single alphabetical character).
+        
+        Args:
+            guess (str): The user's guess for a letter in the word
+        
+        '''
         while True:
             guess = input("Enter a single letter \n")
             
@@ -37,7 +58,7 @@ class Hangman:
             
             
 def play_game(word_list):
-    num_lives = 5
+    # This function pulls class methods together with conditions to simulate the game.
     guess = str()
     game = Hangman(word_list)    
     while True:
